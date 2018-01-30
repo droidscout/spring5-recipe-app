@@ -1,31 +1,24 @@
 package com.spring.spring5recipeapp.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
+@Data
+@EqualsAndHashCode ( exclude = {"recipe"} )
 @Entity
 public class Category {
 
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue ( strategy = GenerationType.IDENTITY )
     private Long id;
     private String description;
 
-    @ManyToMany (mappedBy = "categories")
-    private Set<Recipe> recipe;
+    @ManyToMany ( mappedBy = "categories" )
+    private Set<Recipe> recipe = new HashSet<>();
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId( Long id ) {
-        this.id = id;
-    }
-
-    public Set<Recipe> getRecipe() {
-        return recipe;
-    }
-
-    public void setRecipe( Set<Recipe> recipe ) {
-        this.recipe = recipe;
-    }
 }
