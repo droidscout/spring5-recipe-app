@@ -43,8 +43,10 @@
                             </tr>
                             </thead>
                             <tr th:each="recipe: ${recipes}">
+                                <!--/*@thymesVar id="recipe" type="com.spring.spring6recipeapp.domain.Recipe"*/-->
                                 <td th:text="${recipe.id}"></td>
                                 <td th:text="${recipe.description}"></td>
+                                <td><a href="#" th:href="@{'/recipe/show/' + ${recipe.id}}">View</a></td>
                             </tr>
                         </table>
                     </div>
